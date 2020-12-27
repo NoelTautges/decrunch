@@ -1,2 +1,4 @@
 decrunch.cpp
 build
+*.egg-info
+dist
