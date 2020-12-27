@@ -3689,7 +3689,7 @@ class crn_unpacker {
 			return false;
 
 		static_huffman_data_model dm[2];
-		for (uint32 i = 0; i < (has_etc_color_blocks ? 1 : 2); i++)
+		for (uint32 i = 0; i < (has_etc_color_blocks ? 1u : 2u); i++)
 			if (!m_codec.decode_receive_static_data_model(dm[i]))
 				return false;
 
@@ -4760,7 +4760,7 @@ blk.set_selector(x, y, pFrom_linear[cur[x+y*4]]);
 					block_buffer_element &buffer = m_block_buffer[x];
 					uint8 endpoint_reference;
 					if (y & 1) {
-						endpoint_reference = buffer.endpoint_reference;
+						endpoint_reference = (uint8)buffer.endpoint_reference;
 					} else {
 						endpoint_reference = reference_group & 3;
 						reference_group >>= 2;
@@ -4818,7 +4818,7 @@ blk.set_selector(x, y, pFrom_linear[cur[x+y*4]]);
 					block_buffer_element &buffer = m_block_buffer[x];
 					uint8 endpoint_reference;
 					if (y & 1) {
-						endpoint_reference = buffer.endpoint_reference;
+						endpoint_reference = (uint8)buffer.endpoint_reference;
 					} else {
 						endpoint_reference = reference_group & 3;
 						reference_group >>= 2;
@@ -4885,7 +4885,7 @@ blk.set_selector(x, y, pFrom_linear[cur[x+y*4]]);
 					block_buffer_element &buffer = m_block_buffer[x << 1];
 					uint8 endpoint_reference, block_endpoint[4], e0[4], e1[4];
 					if (y & 1) {
-						endpoint_reference = buffer.endpoint_reference;
+						endpoint_reference = (uint8)buffer.endpoint_reference;
 					} else {
 						reference_group = m_codec.decode(m_chunk_encoding_dm);
 						endpoint_reference =
@@ -4964,7 +4964,7 @@ blk.set_selector(x, y, pFrom_linear[cur[x+y*4]]);
 					block_buffer_element &buffer = m_block_buffer[x << 1];
 					uint8 endpoint_reference, block_endpoint[4], e0[4], e1[4];
 					if (y & 1) {
-						endpoint_reference = buffer.endpoint_reference;
+						endpoint_reference = (uint8)buffer.endpoint_reference;
 					} else {
 						reference_group = m_codec.decode(m_chunk_encoding_dm);
 						endpoint_reference =

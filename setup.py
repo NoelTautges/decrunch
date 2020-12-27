@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from setuptools import Extension, setup
+from sys import platform
 
 try:
 	from Cython.Build import cythonize
@@ -14,7 +15,7 @@ extensions = [
 		["crn_decomp.cpp", "decrunch." + ("pyx" if cythonize else "cpp")],
 		language="c++",
 		include_dirs=["crunch"],
-		extra_compile_args=["-std=c++11"],
+		extra_compile_args=["-std=c++11"] if platform != "win32" else [],
 	)
 ]
 if cythonize:
